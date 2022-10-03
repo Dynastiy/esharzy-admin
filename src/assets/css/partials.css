@@ -1,0 +1,195 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css");
+@import url("@/assets/css/bootstrap.min.css");
+@import url('./auth.css');
+@import url('./dashboard.css');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap'); */
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+*,
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--primary-font-family);
+    text-decoration: none !important;
+    list-style: none;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+}
+
+body {
+    background-color: var(--gray-100);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--main-color);
+    /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid var(--main-color);
+    /* creates padding around scroll thumb */
+}
+
+:root {
+    /* --primary-font-family: 'Poppins', sans-serif; */
+    --primary-font-family: 'Manrope', sans-serif;
+    /* Brand Colors  */
+    --primary-color: #F14242;
+    --secondary-color: #1cbcd0;
+    --accent-color-light: #ccc;
+    --accent-color-dark: #333;
+    /* Gray Shades  */
+    --gray-100: #F9F8F9;
+    --gray-200: #F8F6F5;
+    --gray-300: #EAEAEA;
+    --gray-400: #CCCCCC;
+    --gray-500: #8B8C8C;
+    --gray-600: #4F4F4F;
+    --gray-700: #2D2F30;
+    --gray-800: #151617;
+    /* Alerts/Extras  */
+    --error-color: #F2665E;
+    --info-color: #F9971E;
+    --success-color: #A9FEDB;
+    --spacer: 20px;
+    --curve: 10;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.loader {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+button {
+    background-color: var(--primary-color);
+    border: none;
+    width: 100%;
+    padding: 0.6rem;
+    color: #fff;
+    border-radius: 5px !important;
+    font-size: 14px !important;
+}
+
+.table td,
+.table th {
+    border-top: none;
+    border-bottom: none;
+    font-size: 0.8rem;
+    vertical-align: middle;
+}
+
+.table td {
+    /* color: var(--main-color); */
+    border-bottom: 1px solid var(--gray-300);
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.table thead th {
+    /* border-bottom: none; */
+    color: var(--gray-500) !important;
+}
+
+.other--tables .table thead th {
+    border-bottom: 1px solid var(--gray-300);
+    color: var(--gray-700);
+    background-color: var(--gray-200);
+}
+
+.other--tables .table td {
+    color: var(--gray-800);
+}
+
+.active,
+.completed,
+.approved {
+    color: green;
+    background-color: rgba(0, 128, 0, 0.175);
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    border-radius: 15px;
+}
+
+.delivered {
+    color: rgb(41, 87, 89);
+    background-color: rgba(0, 255, 255, 0.175);
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    border-radius: 15px;
+}
+
+.canceled,
+.deactivated,
+.rejected,
+.banned {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.175);
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    border-radius: 15px;
+}
+
+.in-progress {
+    color: purple;
+    background-color: rgba(128, 0, 128, 0.175);
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    border-radius: 3px;
+}
+
+.activated {
+    color: green;
+    background-color: rgba(0, 128, 0, 0.175);
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    border-radius: 15px;
+}
+
+.pending {
+    color: orange;
+    background-color: rgba(255, 166, 0, 0.175);
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    border-radius: 15px;
+}
