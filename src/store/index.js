@@ -9,6 +9,7 @@ import payouts from '@/modules/payouts/store/index'
 import orders from '@/modules/orders/store/index'
 import stores from '@/modules/stores/store/index'
 import catalogs from '@/modules/catalog/store/index'
+import dashboard from '@/modules/dashboard/store/index'
 
 Vue.use(Vuex)
 
@@ -31,6 +32,7 @@ export default new Vuex.Store({
         payouts,
         orders,
         stores,
-        catalogs
+        catalogs,
+        dashboard
     }
 })

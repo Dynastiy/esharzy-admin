@@ -40,7 +40,7 @@
                 <span class="text-secondary small">Min. 8 Characters</span>
                 <small class="text-danger" v-show="errMessages.password" v-for="err in errMessages.password" :key="err"> *{{ err }} </small>
               </div>
-              <div
+              <!-- <div
                 class="mb-1 d-flex justify-content-between align-items-center"
               >
                 
@@ -52,7 +52,7 @@
                     >Forgot Password?</span
                   >
                 </div>
-              </div>
+              </div> -->
               <div class="mt-3">
                 <button>Sign In</button>
               </div>

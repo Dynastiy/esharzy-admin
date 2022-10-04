@@ -143,7 +143,8 @@ button {
 
 .active,
 .completed,
-.approved {
+.approved,
+.activated {
     color: green;
     background-color: rgba(0, 128, 0, 0.175);
     font-size: 0.7rem;
@@ -175,14 +176,6 @@ button {
     background-color: rgba(128, 0, 128, 0.175);
     font-size: 0.7rem;
     padding: 0.2rem 1rem;
-    border-radius: 3px;
-}
-
-.activated {
-    color: green;
-    background-color: rgba(0, 128, 0, 0.175);
-    font-size: 0.7rem;
-    padding: 0.2rem 1rem;
     border-radius: 15px;
 }
 
@@ -192,4 +185,29 @@ button {
     font-size: 0.7rem;
     padding: 0.2rem 1rem;
     border-radius: 15px;
+}
+
+.in--progress_bg {
+    background-color: purple;
+}
+
+.total--bg {
+    background-color: #70d06c;
+}
+
+.declined--bg {
+    background-color: #4c9def;
+}
+
+.rejected--bg {
+    background-color: red;
+}
+
+.pending--bg {
+    background-color: #dfae14;
+}
+
+.completed--bg,
+.approved--bg {
+    background-color: green;
 }

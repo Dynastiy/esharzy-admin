@@ -286,3 +286,20 @@
 .menu--item:hover {
     background-color: var(--gray-200);
 }
+
+.analytics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.analytics div {
+    padding: 0.6rem;
+    border-radius: 10px;
+    background-color: var(--accent-color-dark);
+}
+
+.analytics div h6,
+.analytics div h1 {
+    color: #fff;
+}
