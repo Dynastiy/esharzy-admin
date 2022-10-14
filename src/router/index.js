@@ -67,7 +67,26 @@ const routes = [
                     import ( /* webpackChunkName: "about" */ '../modules/products/views/_id.vue')
             },
 
-            // Settings
+            {
+                path: '/settings',
+                name: 'settings',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../modules/settings/views/indexPage.vue')
+            },
+            {
+                path: '/kyc/:id',
+                name: 'kyc-details',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../modules/settings/views/viewKYC.vue')
+            },
+
+            // Catalog
             {
                 path: '/catalog/tags',
                 // route level code-splitting
