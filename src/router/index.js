@@ -85,6 +85,15 @@ const routes = [
                 component: () =>
                     import ( /* webpackChunkName: "about" */ '../modules/settings/views/viewKYC.vue')
             },
+            {
+                path: '/manufacturer-applications/:id',
+                name: 'application-details',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../modules/settings/views/viewApplication.vue')
+            },
 
             // Catalog
             {

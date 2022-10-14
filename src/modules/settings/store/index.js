@@ -15,7 +15,9 @@ const getDefaultState = () => {
         request: {},
         loading: false,
         kycs: [],
-        kyc: {}
+        kyc: {},
+        applications: [],
+        application: {}
     };
 };
 
@@ -37,6 +39,12 @@ export default {
         singleKYC: state => {
             return state.kyc
         },
+        manufacturerApplications: state => {
+            return state.applications
+        },
+        singleApplication: state => {
+            return state.application
+        },
         loading: state => {
             return state.loading
         }
@@ -53,6 +61,12 @@ export default {
         },
         SET_KYC: (state, data) => {
             state.kyc = data
+        },
+        SET_MANUFACTURER_APPLICATIONS: (state, data) => {
+            state.applications = data
+        },
+        SET_MANUFACTURER_APPLICATION: (state, data) => {
+            state.application = data
         },
         SET_LOADING: (state, data) => {
             state.loading = data;
@@ -116,7 +130,7 @@ export default {
                 })
         },
 
-        // Get Vendor requests
+        // Get Vendor KYCs
         getVendorKYCs({ commit }, payload) {
             commit("SET_LOADING", true)
             http().get(`admin/get-vendor-applications?${payload.q}=${payload.value}`)
@@ -157,12 +171,69 @@ export default {
                 })
         },
 
-        // Get Single Vendor Request
+        // Get Single Vendor KYC
         getKYCByID({ commit }, id) {
             commit("SET_LOADING", true)
             http().get(`admin/find-vendor-application/${id}`)
                 .then((res) => {
                     commit("SET_KYC", res.data.vendorApplication)
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
+        },
+
+        // Get Manufacturer Applications
+        getManufacturerApplications({ commit }, payload) {
+            commit("SET_LOADING", true)
+            http().get(`admin/get-manufacturer-applications?${payload.q}=${payload.value}`)
+                .then((res) => {
+                    commit("SET_MANUFACTURER_APPLICATIONS", res.data.data)
+                    console.log(res.data.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
+        },
+
+        updateApplicationStatus({ commit, dispatch }, payload) {
+            commit("SET_LOADING", true)
+            http().post(`admin/update-manufacturer-application/${payload.id}`, payload)
+                .then((res) => {
+                    Toastify({
+                        text: `Manufacturer application ${payload.status}`,
+                        className: "info",
+                        style: {
+                            background: "#333",
+                            fontSize: "11px",
+                            borderRadius: "3px"
+                        }
+                    }).showToast();
+                    dispatch('getManufacturerApplications', payload)
+                    dispatch('getApplicationByID', payload.id)
+                    return res
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
+        },
+
+        // Get Single Vendor KYC
+        getApplicationByID({ commit }, id) {
+            commit("SET_LOADING", true)
+            http().get(`admin/find-manufacturer-application/${id}`)
+                .then((res) => {
+                    commit("SET_MANUFACTURER_APPLICATION", res.data.manufacturerApplication)
                     console.log(res);
                 })
                 .catch((err) => {

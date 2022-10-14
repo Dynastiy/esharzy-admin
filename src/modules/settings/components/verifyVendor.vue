@@ -40,8 +40,10 @@
                     >
                       <!-- <td> <img style="border-radius:50%; width:30px; height:30px; object-fit: cover; object-position: center;" :src=' item.photo == null ? "/no-user.png" : config.imgUrl +item.photo ' alt=""> </td> -->
                       <td class="text-capitalize">{{ item.beneficiary }}</td>
-                      <td class="text-capitalize">
-                        {{ item.is_registered === 0 ? 'Business not registered' : 'Business Registered'  }}
+                      <td class="text-capitalize" >
+                        <span :class="item.is_registered === 0 ? ' not-registered' : 'registered'">
+                            {{ item.is_registered === 0 ? ' not registered' : 'registered'  }}
+                        </span>
                       </td>
                       <td> {{ item.company_type }} </td>
                       <td>{{ timeStamp2(item.created_at) }}</td>

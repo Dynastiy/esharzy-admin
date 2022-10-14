@@ -28,7 +28,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <div class="mt-3" v-if="requests.length == 0">
+                    <div class="mt-3" v-if="applications.length == 0">
                     <el-alert
                       title="No items here"
                       type="error"
@@ -36,23 +36,25 @@
                     </el-alert>
                   </div>
                     <tr
-                      v-for="item in kycs"
+                      v-for="item in applications"
                       :key="item.id"
                     >
                       <!-- <td> <img style="border-radius:50%; width:30px; height:30px; object-fit: cover; object-position: center;" :src=' item.photo == null ? "/no-user.png" : config.imgUrl +item.photo ' alt=""> </td> -->
                       <td class="text-capitalize">{{ item.beneficiary }}</td>
                       <td class="text-capitalize">
-                        {{ item.is_registered === 0 ? 'Business not registered' : 'Business Registered'  }}
+                        {{ item.business_name  }}
                       </td>
-                      <td> {{ item.company_type }} </td>
+                      <td> {{ item.rc_number || item.registration_number }} </td>
+                      
+                      <td> {{ item.tax_number }} </td>
                       <td>{{ timeStamp2(item.created_at) }}</td>
-                     
                       <td>
                         <span :class="item.status">{{ item.status }}</span>
                       </td>
+                      
                       <td class="" style="color:var(--primary-color)" > 
-                            <div role="button" @click="goToKYC(item)">
-                                <span>View KYC</span> 
+                            <div role="button" @click="goToApplication(item)">
+                                <span>View</span> 
                                 <span> &gt; </span>
                             </div>
                         </td>
@@ -82,29 +84,20 @@
           };
       },
       methods: {
-        ...mapActions("settings", ["updateRequestStatus", "getVendorRequests"]),
-        goToKYC(item) {
-              this.$router.push({ name: "kyc-details", params: { id: item.id } });
-          },
-          updateStatus(item, value) {
-            let payload = {
-                q: "status",
-                value: "",
-                id: item.id,
-                status: value
-            }
-            this.updateRequestStatus(payload)
+        ...mapActions("settings", ["updateRequestStatus", "getManufacturerApplications"]),
+        goToApplication(item) {
+              this.$router.push({ name: "application-details", params: { id: item.id } });
           },
           filter(){
             let payload = {
                 q: "status",
                 value: this.status,
             }
-            this.getVendorRequests(payload)
+            this.getManufacturerApplications(payload)
           }
       },
       computed: {
-          ...mapState("settings", ["requests", "kycs"])
+          ...mapState("settings", ["requests", "kycs", "applications"])
       },
   };
   </script>

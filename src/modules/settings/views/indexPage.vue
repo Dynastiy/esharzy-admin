@@ -39,7 +39,7 @@ import ManufacturerApplication from '../components/manufacturerApplication.vue';
         this.getVendorRequests(payload), this.getVendorKYCs(payload)
     },
     methods: {
-        ...mapActions("settings", ["getVendorRequests", "getVendorKYCs"]),
+        ...mapActions("settings", ["getVendorRequests", "getVendorKYCs", "getManufacturerApplications"]),
         handleClick(){
             let payload = {
                 q: "status",
@@ -50,6 +50,9 @@ import ManufacturerApplication from '../components/manufacturerApplication.vue';
             }
             else if(this.activeName === 'second') {
                 this.getVendorKYCs(payload)
+            }
+            else {
+                this.getManufacturerApplications(payload)
             }
         }
     },

@@ -11,7 +11,7 @@ const timeStamp = (value) => {
 
 const timeStamp2 = (value) => {
     if (value) {
-        return moment(String(value)).format('DD-MMMM-YYYY')
+        return moment(String(value)).format('DD MMM, YYYY')
     }
 }
 
