@@ -30,8 +30,8 @@
                       <td class="text-capitalize">
                         {{ item.role }}
                       </td>
-                      <td class="text-capitalize">
-                        {{ item.type }}
+                      <td  class="text-capitalize">
+                        {{ item.role !== 'buyer' ?  item.type : 'Not Applicable' }}
                       </td>
                       <td>
                         <span :class="item.status">{{ item.status }}</span>
@@ -58,6 +58,7 @@
     import config from "@/config/api"
   import { timeStamp2 } from "@/plugins/filter";
   export default {
+    props: ['activeName'],
       data() {
           return {
                 config,

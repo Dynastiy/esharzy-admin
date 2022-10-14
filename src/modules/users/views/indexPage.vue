@@ -13,7 +13,7 @@
             <AllUsers />
           </el-tab-pane>
           <el-tab-pane label="Customers" name="buyer">
-            <CustomersPage />
+            <CustomersPage :role="activeName"/>
           </el-tab-pane>
           <el-tab-pane label="Vendors" name="vendor">
             <VendorPage />

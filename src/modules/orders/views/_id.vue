@@ -1,7 +1,9 @@
 <template>
     <div>
         <div>
-            <div class="" id="main--content">
+            <div class="" id="main--content" v-loading="loading"
+      element-loading-background="rgba(255, 255, 255, 0.7)"
+      style="width: 100%; height:100vh;">
                 <!-- <h5 class="mb-3">Order Details</h5> -->
                <div class="p-4 bg-white">
                     <div class="d-flex justify-content-between">
@@ -16,7 +18,7 @@
                     </div>
                     <hr>
                     <div class="products">
-                        <h4 class="text-secondary font-weight-bold mb-3">Products</h4>
+                        <h5 class="text-secondary font-weight-bold mb-3">Products</h5>
                         <div v-for="product in products" :key="product.id">
                             <div class="d-flex align-items-center" style="gap:20px"> 
                                 <div>
@@ -37,7 +39,7 @@
                     <hr>
 
                     <div class="delivery">
-                        <h4 class="text-secondary font-weight-bold mb-2">Delivery Address</h4>
+                        <h5 class="text-secondary font-weight-bold mb-2">Delivery Address</h5>
                         <div class="d-flex flex-column" style="gap:5px">
                             <h6> {{ order.delivery_address }} </h6>
                             <h6> {{ order.city }} </h6>
@@ -48,7 +50,7 @@
                     <hr>
                     
                     <div class="order--summary">
-                        <h4 class="text-secondary font-weight-bold mb-2">Order Summary</h4>
+                        <h5 class="text-secondary font-weight-bold mb-2">Order Summary</h5>
                         <div class="d-flex flex-column" style="gap:5px">
                             <h6> <span class="text-secondary">Total Amount:</span> &#8358;{{ order.total_amount.toLocaleString() }} </h6>
                             <h6> <span class="text-secondary">Total Quantity:</span> {{ order.total_quantity}} </h6>
@@ -70,6 +72,7 @@
 
 <script>
     import config from '@/config/api'
+    import { mapState } from "vuex"
     import { createRef, timeStamp2 } from '@/plugins/filter'
 export default {
     data(){
@@ -98,7 +101,8 @@ export default {
         },
         products() {
             return this.$store.getters['orders/singleOrder'].products
-        }
+        },
+        ...mapState("orders", ["loading"])
     }
 }
 </script>

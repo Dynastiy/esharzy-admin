@@ -77,12 +77,12 @@
                             <h6 class="" style="font-size:10px"> Role </h6>
                             <h6 class="font-weight-bold small text-capitalize mt-1"> {{ user.role }}  </h6>
                            </div>
-                           <div class="user--info">
-                            <h6 class="" style="font-size:10px"> Type </h6>
+                           <div class="user--info" v-if="user.role !== 'buyer' ">
+                            <h6 class="" style="font-size:10px" > Type </h6>
                             <h6 class="font-weight-bold small text-capitalize mt-1"> {{ user.type  }}  </h6>
                            </div>
-                           <div class="user--info">
-                            <h6 class="" style="font-size:10px"> Is Vendor a Manufacturer? </h6>
+                           <div class="user--info" v-if="user.role !== 'buyer' ">
+                            <h6 class="" style="font-size:10px" > Is Vendor a Manufacturer? </h6>
                             <h6 class="font-weight-bold small text-capitalize mt-1"> {{ user.is_manufacturer  }}  </h6>
                            </div>
                         </div>
