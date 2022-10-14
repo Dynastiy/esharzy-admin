@@ -298,12 +298,12 @@
 .analytics div {
     padding: 0.6rem;
     border-radius: 10px;
-    background-color: var(--accent-color-dark);
+    background-color: var(--accent-color);
 }
 
 .analytics div h6,
 .analytics div h1 {
-    color: #fff;
+    color: #000 !important;
 }
 
 

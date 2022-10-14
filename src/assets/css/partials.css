@@ -57,6 +57,7 @@ body {
     --secondary-color: #1cbcd0;
     --accent-color-light: #ccc;
     --accent-color-dark: #333;
+    --accent-color: rgb(234, 234, 234);
     --cover: rgba(51, 51, 51, 0.8);
     /* Gray Shades  */
     --gray-100: #F9F8F9;
@@ -192,27 +193,34 @@ button {
     border-radius: 15px;
 }
 
-.in--progress_bg {
-    background-color: purple;
+.in--progress_bg h1,
+.in--progress_bg h6 {
+    color: purple;
 }
 
-.total--bg {
-    background-color: #70d06c;
+.total--bg h6,
+.total--bg h1 {
+    color: #70d06c;
 }
 
-.declined--bg {
-    background-color: #4c9def;
+.declined--bg h6,
+.declined--bg h1 {
+    color: #4c9def;
 }
 
-.rejected--bg {
-    background-color: red;
+.rejected--bg h1,
+.rejected--bg h6 {
+    color: red;
 }
 
-.pending--bg {
-    background-color: #dfae14;
+.pending--bg h1,
+.pending--bg h6 {
+    color: #dfae14;
 }
 
-.completed--bg,
-.approved--bg {
-    background-color: green;
+.completed--bg h1,
+.completed--bg h6,
+.approved--bg h1,
+.approved--bg h6 {
+    color: green;
 }
