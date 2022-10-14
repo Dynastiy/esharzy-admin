@@ -146,6 +146,7 @@ export default {
                         }
                     }).showToast();
                     dispatch('getVendorKYCs', payload)
+                    dispatch('getKYCByID', payload.id)
                     return res
                 })
                 .catch((err) => {

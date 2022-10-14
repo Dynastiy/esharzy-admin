@@ -12,7 +12,9 @@
                     <el-tab-pane label="Vendor KYC" name="second">
                         <VerifyVendor/>
                     </el-tab-pane>
-                    <el-tab-pane label="Manufacturer Applications" name="third">Config</el-tab-pane>
+                    <el-tab-pane label="Manufacturer Applications" name="third">
+                        <ManufacturerApplication/>
+                    </el-tab-pane>
                 </el-tabs>
             </div>
         </div>
@@ -22,6 +24,7 @@
   import { mapActions, mapState } from 'vuex'
 import VendorRequests from '../components/vendorRequests.vue';
 import VerifyVendor from '../components/verifyVendor.vue';
+import ManufacturerApplication from '../components/manufacturerApplication.vue';
     export default {
     data() {
         return {
@@ -50,7 +53,7 @@ import VerifyVendor from '../components/verifyVendor.vue';
             }
         }
     },
-    components: { VendorRequests, VerifyVendor },
+    components: { VendorRequests, VerifyVendor, ManufacturerApplication },
     computed: {
         ...mapState("settings", ["loading"])
     }

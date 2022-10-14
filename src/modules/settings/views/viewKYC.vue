@@ -10,15 +10,21 @@
         <div class="mb-3">
             <h4 style="font-weight:600"> {{ user.first_name + "  " + user.last_name }} </h4>
             <div class="mt-3 d-flex align-items-center justify-content-between">
-                <div class="update--status">
+                <div class="update--status" :class="kyc.status">
                     <input type="text" class="text-capitalize" readonly v-model="kyc.status">
-                    <div class="divider"></div>
+                    <div class="divider" v-if=' kyc.status === "pending" '></div>
                     <el-popover
+                    v-if=' kyc.status === "pending" '
                         placement="bottom"
                         width="200"
-                        trigger="click"
+                        trigger="hover"
                         >
-                        <div>Content</div>
+                        <div>
+                            <ul class="m-0 kyc--actions">
+                                <li role="button" @click="changeKYCStatus('approved')">Approve</li>
+                                <li role="button" @click="changeKYCStatus('rejected')">Decline</li>
+                            </ul>
+                        </div>
                         <i class="el-icon-arrow-down" role="button" slot="reference"  style="font-size:20px; font-weight: 600; padding-left: 0.4rem;"></i>
                         
                     </el-popover>
@@ -100,6 +106,30 @@
         </div>
       </div>
     </div>
+
+    <!-- Add Comment  -->
+    <div v-if="dialogVisible">
+        <div class="modal--mask add-comment">
+            <div class="modal--content">
+                <div class="text-right">
+                    <i class="el-icon-circle-close" style="font-size:25px" role="button" @click="dialogVisible =  !dialogVisible"></i>
+                </div>
+                <div>
+
+                </div>
+                <form action="" @submit.prevent="updateStatus">
+                    <div class="mb-3">
+                        <label for="" class="small text-muted">Enter Comment</label>
+                        <input type="text" v-model="admin_comment">
+                    </div>
+                    <div>
+                        <button class="py-1 px-3"  :class='status === "Approve" ? "bg-success" : "" '> {{ status }} KYC  </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End of Add Comment  -->
   </div>
 </template>
 
@@ -112,11 +142,33 @@ export default {
     return {
         id: this.$route.params.id,
         select: '',
-        timeStamp2, config
+        timeStamp2, config,
+        dialogVisible: false, 
+        status: "",
+        visible: false, 
+        admin_comment: "",
+        status_update: null
     };
   },
   methods:{
-    ...mapActions("settings", ["getKYCByID"])
+    ...mapActions("settings", ["getKYCByID", "updateKYCStatus" ]),
+    changeKYCStatus(value){
+        this.dialogVisible = true
+        this.visible = !this.visible
+        let status_to = value === 'approved' ? "Approve" : "Decline"
+        this.status = status_to
+        this.status_update = value
+    },
+    updateStatus(){
+        let payload = {
+            status: this.status_update,
+            admin_comment: this.admin_comment,
+            id: this.id
+        }
+        this.updateKYCStatus(payload)
+        // console.log(payload);
+        this.dialogVisible = false
+    }
   },
   beforeMount(){
     this.getKYCByID(this.id)

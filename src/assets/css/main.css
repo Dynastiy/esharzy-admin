@@ -1,4 +1,23 @@
 @import url('@/assets/css/partials.css');
+.modal--mask {
+    background-color: var(--cover);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal--content {
+    background-color: #fff;
+    width: 40%;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
 .jpg {
     background-image: url('../icons/jpg.png');
 }

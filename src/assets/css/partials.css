@@ -57,6 +57,7 @@ body {
     --secondary-color: #1cbcd0;
     --accent-color-light: #ccc;
     --accent-color-dark: #333;
+    --cover: rgba(51, 51, 51, 0.8);
     /* Gray Shades  */
     --gray-100: #F9F8F9;
     --gray-200: #F8F6F5;

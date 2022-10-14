@@ -19,15 +19,16 @@
                   <thead>
                     <tr>
                         <th scope="col">Beneficiary</th>
-                        <th scope="col">Business Registration</th>
-                        <th scope="col">Business/Company Type</th>
+                        <th scope="col">Business Name</th>
+                        <th scope="col">RC/Registration Number</th>
+                        <th scope="col">Tax Identification Number</th>
                         <th scope="col">Date Submitted</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <div class="mt-3" v-if="kycs.length == 0">
+                    <div class="mt-3" v-if="requests.length == 0">
                     <el-alert
                       title="No items here"
                       type="error"
@@ -51,7 +52,7 @@
                       </td>
                       <td class="" style="color:var(--primary-color)" > 
                             <div role="button" @click="goToKYC(item)">
-                                <span>View KYCS</span> 
+                                <span>View KYC</span> 
                                 <span> &gt; </span>
                             </div>
                         </td>
@@ -81,16 +82,25 @@
           };
       },
       methods: {
-        ...mapActions("settings", ["getVendorKYCs"]),
+        ...mapActions("settings", ["updateRequestStatus", "getVendorRequests"]),
         goToKYC(item) {
               this.$router.push({ name: "kyc-details", params: { id: item.id } });
+          },
+          updateStatus(item, value) {
+            let payload = {
+                q: "status",
+                value: "",
+                id: item.id,
+                status: value
+            }
+            this.updateRequestStatus(payload)
           },
           filter(){
             let payload = {
                 q: "status",
                 value: this.status,
             }
-            this.getVendorKYCs(payload)
+            this.getVendorRequests(payload)
           }
       },
       computed: {
