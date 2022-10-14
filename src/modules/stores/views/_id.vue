@@ -19,23 +19,39 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">Name</th>
-                                    <td class="text-capitalize"> {{ store.user.first_name + " "  + store.user.last_name }} </td>
+                                    <td class="text-capitalize"> {{ user.first_name + " "  + user.last_name }} </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Email</th>
-                                    <td class=""> {{ store.user.email }} </td>
+                                    <td class=""> {{ user.email }} </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Type </th>
-                                    <td class="text-capitalize"> {{ store.user.type }} </td>
+                                    <td class="text-capitalize"> {{ user.type }} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Phone Number</th>
+                                    <td class=""> {{ user.phone_no }} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Address </th>
+                                    <td class="text-capitalize"> {{ user.address === null ? "null" : user.addresss }} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">City</th>
+                                    <td class=""> {{ user.city === null ? "null" : user.city }} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Country </th>
+                                    <td class="text-capitalize"> {{ user.country }} </td>
                                 </tr>
                             </tbody>
                         </table>
 
                         <div class="text-right">
                             <button class="w-auto" 
-                                @click="updateStoreStatus(store.status === 'activated' ? 'activated' : 'deactivated' )"
-                                :class="store.status === 'activated' ? 'bg-success' : '' "> 
+                                @click="updateStoreStatus(store.status === 'deactivated' ? 'activated' : 'deactivated' )"
+                                :class="store.status === 'activated' ? '' : 'bg-success' "> 
                                 {{ store.status === 'activated' ? 'Deactivate' : 'Activate' }}
                             </button>
                         </div>
@@ -114,6 +130,9 @@ export default {
     computed:{
         store(){
             return this.$store.getters['stores/singleStore']
+        },
+        user(){
+            return this.$store.getters['stores/singleStore'].user
         },
         loading(){
             return this.$store.getters['stores/loading']

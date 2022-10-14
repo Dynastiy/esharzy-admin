@@ -4,6 +4,7 @@
     max-height: 100vh;
     background-color: var(--accent-color-dark);
     height: 100vh;
+    overflow-y: auto;
 }
 
 .side--bar a {
@@ -32,6 +33,7 @@
 
 .app--header {
     padding: 1rem 2rem;
+    /* background-color: var(--accent-color-dark); */
 }
 
 .app--header .search--area input {
@@ -302,4 +304,56 @@
 .analytics div h6,
 .analytics div h1 {
     color: #fff;
+}
+
+
+/* Settings  */
+
+.vendor--request_status {
+    padding: 0.2rem 0.3rem;
+    border: 1px solid var(--gray-400);
+    border-radius: 3px;
+    outline: none;
+}
+
+.filter select {
+    padding: 0.2rem 0.4rem;
+    border: 1px solid var(--gray-400);
+    border-radius: 3px;
+    outline: none;
+    font-size: 0.8rem;
+}
+
+.update--status input {
+    background-color: transparent;
+    width: 100%;
+    color: var(--gray-300);
+    outline: none;
+    border: transparent;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+.update--status {
+    display: flex;
+    /* width: 80px; */
+    background-color: var(--accent-color-dark);
+    width: 15%;
+    color: var(--gray-300);
+    border-radius: 6px;
+    align-items: center;
+    padding-right: 0.4rem;
+}
+
+.update--status .divider {
+    background-color: var(--gray-500);
+    width: 1px;
+    height: 20px;
+}
+
+.business--photo img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
 }

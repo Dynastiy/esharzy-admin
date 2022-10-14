@@ -1,4 +1,46 @@
 @import url('@/assets/css/partials.css');
-.apps--loader {
-    
+.jpg {
+    background-image: url('../icons/jpg.png');
+}
+
+.jpeg {
+    background-image: url('../icons/jpeg.png');
+}
+
+.png {
+    background-image: url('../icons/png.png');
+}
+
+.docx {
+    background-image: url('../icons/docx.png');
+}
+
+.doc {
+    background-image: url('../icons/doc.png');
+}
+
+.pdf {
+    background-image: url('../icons/pdf.png');
+}
+
+.svg {
+    background-image: url('../icons/svg.png');
+}
+
+.gif {
+    background-image: url('../icons/gif.png');
+}
+
+.jpg,
+.jpeg,
+.png,
+.docx,
+.doc,
+.pdf,
+.svg,
+.gif {
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-position: center;
 }

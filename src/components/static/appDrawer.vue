@@ -52,15 +52,22 @@
 
             <li>
               <router-link to="/stores">
-                <i class="el-icon-setting"></i>
+                <i class="el-icon-s-shop"></i>
                 <span>Stores</span>
               </router-link>
             </li>
 
            <li>
               <router-link to="/catalog/tags">
-                  <i class="el-icon-setting"></i>
+                  <i class="el-icon-files"></i>
                   <span>Catalog</span>
+              </router-link>
+           </li>
+
+           <li>
+              <router-link to="/settings">
+                  <i class="el-icon-setting"></i>
+                  <span>Settings</span>
               </router-link>
            </li>
           </ul>

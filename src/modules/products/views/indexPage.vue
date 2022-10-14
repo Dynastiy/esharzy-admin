@@ -30,7 +30,7 @@
                     <tr>
                       <th scope="col">Product Name</th>
                       <th scope="col">Price</th>
-                      <!-- <th scope="col">Description</th> -->
+                      <th scope="col">Availability</th>
                       <th scope="col">Status</th>
                       <th scope="col">Date Created</th>
                       <th scope="col">Actions</th>
@@ -42,8 +42,13 @@
                       v-for="data in products"
                       :key="data.id"
                     >
-                      <td class="text-capitalize">{{ data.name }}</td>
+                      <td class="text-capitalize d-flex align-items-center" style="gap:5px">
+                        <span> <img :src='config.imgUrl === "" || config.imgUrl === null ? "/icon.svg" : config.imgUrl+data.app_icon ' 
+                          width="40px" height="40px" style="border-radius: 50%; object-position:center; object-fit:cover" alt=""> </span>
+                        <span>{{ data.name }}</span>
+                      </td>
                       <td>&#8358;{{ data.price }}</td>
+                      <td>  <span :class="data.availability"> {{ data.availability }} </span> </td>
                       <td>
                         <span :class="data.status"> {{ data.status }} </span>
                       </td>
@@ -71,11 +76,12 @@
   
   <script>
   import { timeStamp2 } from "@/plugins/filter";
+  import config from "@/config/api"
 //   import ConfirmDelete from "../../modals/confirmDelete.vue";
   export default {
       data() {
           return {
-              timeStamp2,
+              timeStamp2, config,
               delete_confirm: false,
               product_id: ""
           };

@@ -22,7 +22,7 @@
                 </div>
                 <hr>
 
-                <div class="user--data d-flex align-items-center" style="gap:40px">
+                <div class="user--data d-flex" style="gap:40px">
                     <div class="">
                         <div>
                             <h6 class="text-uppercase text-secondary mb-2" style="font-size:12px">profile photo</h6>
@@ -54,6 +54,10 @@
                            <div class="user--info">
                             <h6 class="" style="font-size:10px"> Date of Birth </h6>
                             <h6 class="font-weight-bold small"> {{ user.dob === null ? "null" : user.dob  }}  </h6>
+                           </div>
+                           <div class="user--info">
+                            <h6 class="" style="font-size:10px"> Address </h6>
+                            <h6 class="font-weight-bold small"> {{ user.address === null ? "null" : user.dob  }}  </h6>
                            </div>
                         </div>
                     </div>
