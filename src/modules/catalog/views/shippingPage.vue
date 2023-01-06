@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div v-loading="loading"
+    element-loading-background="rgba(255, 255, 255, 0.7)"
+    style="width: 100%">
         <div>
             <div>
                 <div class="text-right">
@@ -37,7 +39,10 @@
                                 </button>
                                 <div class="update" v-if="addZone">
                                     <i class="el-icon-close" role="button" @click="addZone = !addZone"></i>
-                                    <input class="mt-2" v-model="dataObj.name" type="text" placeholder="Enter Shipping Zone Name">
+                                    <country-select class="mt-2 w-100" :countryName="true" v-model="country" :country="country" topCountry="NG" />
+                                    <region-select class="mt-2 w-100" v-model="dataObj.name" :country="country" :region="dataObj.name" :countryName="true" :regionName="true" />
+                             
+                                    <!-- <input class="mt-2" v-model="dataObj.name" type="text" placeholder="Enter Shipping Zone Name"> -->
                                     <input class="mt-2" v-model="dataObj.price" type="number" placeholder="Enter Shipping Zone Price">
                                     <button class="py-2 mt-2" @click="createShippingZone(item)"> Create New Shipping Zone</button>
                                 </div>
@@ -91,6 +96,7 @@ export default {
                 name: '', 
                 price: '',
             },
+            country: null,
             view: false,
             addZone: false
         }
@@ -137,7 +143,11 @@ export default {
             return this.$store.getters['catalogs/allTags']
         },
         shipping_classes(){
+            
             return this.$store.getters['catalogs/allShippingClasses']
+        },
+        loading(){
+            return this.$store.getters['catalogs/isLoading']
         }
     }
 }

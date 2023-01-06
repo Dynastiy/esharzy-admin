@@ -13,7 +13,8 @@ const getDefaultState = () => {
     return {
         tags: [],
         categories: [],
-        shipping_classes: []
+        shipping_classes: [],
+        loading: false
     };
 };
 
@@ -32,6 +33,9 @@ export default {
         },
         allShippingClasses: state => {
             return state.shipping_classes
+        },
+        isLoading: state => {
+            return state.loading
         }
     },
     mutations: {
@@ -43,6 +47,9 @@ export default {
         },
         SET_SHIPPING_CLASSES: (state, data) => {
             state.shipping_classes = data
+        },
+        SET_LOADING: (state, data) => {
+            state.loading = data
         }
 
     },
@@ -71,8 +78,8 @@ export default {
         },
 
         // Create Shipping Class
-        createShippingClass({ dispatch }, payload) {
-            // commit("SET_LOADING", true)
+        createShippingClass({ commit, dispatch }, payload) {
+            commit("SET_LOADING", true)
             http().post(`/admin/create-shipping-class`, payload)
                 .then((res) => {
                     dispatch("getShippingClasses")
@@ -90,14 +97,14 @@ export default {
                 .catch((err) => {
                     console.log(err);
                 })
-                // .finally(() => {
-                //     commit("SET_LOADING", false)
-                // })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
         },
 
         // Create Shipping Zone
-        createShippingZone({ dispatch }, payload) {
-            // commit("SET_LOADING", true)
+        createShippingZone({ commit, dispatch }, payload) {
+            commit("SET_LOADING", true)
             http().post(`/admin/create-shipping-zone`, payload)
                 .then((res) => {
                     dispatch("getShippingClasses")
@@ -115,14 +122,14 @@ export default {
                 .catch((err) => {
                     console.log(err);
                 })
-                // .finally(() => {
-                //     commit("SET_LOADING", false)
-                // })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
         },
 
         // Delete Shipping Class
-        deleteShippingClass({ dispatch }, id) {
-            // commit("SET_LOADING", true)
+        deleteShippingClass({ commit, dispatch }, id) {
+            commit("SET_LOADING", true)
             http().post(`/admin/remove-shipping-class/${id}`)
                 .then((res) => {
                     dispatch("getShippingClasses")
@@ -140,9 +147,9 @@ export default {
                 .catch((err) => {
                     console.log(err);
                 })
-                // .finally(() => {
-                //     commit("SET_LOADING", false)
-                // })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
         },
 
         // Create Category

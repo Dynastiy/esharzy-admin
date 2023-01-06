@@ -63,7 +63,6 @@
               </div>
             </div>
           </section>
-  
           <!-- <ConfirmDelete v-show="delete_confirm" @close="close" @done=" deleteThisProduct"/> -->
 
         </div>

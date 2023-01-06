@@ -9,6 +9,11 @@ import '@/assets/css/media-query.css'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+// too be added before mounting app
+import vueCountryRegionSelect from 'vue-country-region-select'
+
+Vue.use(vueCountryRegionSelect)
+
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false

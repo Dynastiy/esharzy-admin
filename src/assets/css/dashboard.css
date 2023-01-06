@@ -265,7 +265,7 @@
     align-items: flex-start;
 }
 
-.update input {
+.update input, .update select {
     display: block;
     width: 100%;
     border: 1px solid var(--gray-400);
