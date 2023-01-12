@@ -11,6 +11,8 @@ import stores from '@/modules/stores/store/index'
 import catalogs from '@/modules/catalog/store/index'
 import dashboard from '@/modules/dashboard/store/index'
 import settings from '@/modules/settings/store/index'
+import payments from '@/modules/payments/store/index'
+
 
 Vue.use(Vuex)
 
@@ -35,6 +37,7 @@ export default new Vuex.Store({
         stores,
         catalogs,
         dashboard,
-        settings
+        settings, 
+        payments
     }
 })

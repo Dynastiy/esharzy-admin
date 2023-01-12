@@ -44,6 +44,13 @@
             </li>
 
             <li>
+              <router-link to="/payments">
+                <i class="el-icon-shopping-bag-1"></i>
+                <span>Payments</span>
+              </router-link>
+            </li>
+
+            <li>
               <router-link to="/payouts">
                 <i class="el-icon-user-solid"></i>
                 <span>Payouts</span>
